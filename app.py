@@ -52,9 +52,25 @@ def main():
 
     st.header("Azure Resource Namer")
     st.write("A simple tool to help you name your Azure resources, based on the [Cloud Adoption Framework naming convention](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)")
+    st.write('\n')
 
-    st.write('---')
-
+    col1, col2, col3, col4, col5 = st.columns(5)
+    with col1:
+        #st.write('Resource type')
+        Host_Country1 = st.selectbox('Resource type',('Resource group', '', ''))
+        #st.write('You selected:', Host_Country)
+    with col2:
+        #st.write('Workload')
+        Host_Country2 = st.selectbox('Workload',('myapp', '', ''))
+    with col3:
+        #st.write('Environment')
+        Host_Country3 = st.selectbox('Environment',('prod', '', ''))
+    with col4:
+        #st.write('Region')
+        Host_Country4 = st.selectbox('Region',('West US', '', ''))
+    with col5:
+        #st.write('Instance')
+        Host_Country5 = st.selectbox('Instance',('1', '', ''))                        
 
 # main function call
 if __name__ == '__main__':
