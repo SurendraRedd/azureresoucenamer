@@ -42,3 +42,14 @@ st.set_page_config(
         layout = "wide",
         initial_sidebar_state = "expanded"
     )
+
+def main():
+    """
+    This function contains the streamlit code details
+    """
+    st.markdown(html_temp, unsafe_allow_html=True)
+
+
+# main function call
+if __name__ == '__main__':
+    main()
