@@ -2,21 +2,6 @@
 This application contains the code related to the
 Azure Resource Namer application.
 """
-
-__author__ = 'Surendra Reddy'
-__version__ = '1.0'
-__maintainer__ = 'Surendra Reddy'
-__email__ = 'surendraelectronics@gmail.com'
-__status__ = 'Inprogress'
-
-print('# ' + '=' * 78)
-print('Author: ' + __author__)
-print('Version: ' + __version__)
-print('Maintainer: ' + __maintainer__)
-print('Email: ' + __email__)
-print('Status: ' + __status__)
-print('# ' + '=' * 78)
-
 # Required packages importing
 import streamlit as st
 
@@ -72,7 +57,8 @@ def main():
         Host_Country3 = st.selectbox('Environment',('prod', '', ''))
     with col4:
         #st.write('Region')
-        Host_Country4 = st.selectbox('Region',('West US', '', ''))
+        #Host_Country4 = st.selectbox('Region',('West US', '', ''))
+        attribute = st.selectbox('Choose region', ['Select','Africa','Asia Pacific','Canada','Europe','Middle East','South America','US'])
     with col5:
         #st.write('Instance')
         Host_Country5 = st.selectbox('Instance',('1', '', ''))                        
