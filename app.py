@@ -1,13 +1,13 @@
 """
 This application contains the code related to the
-new electric car application.
+Azure Resource Namer application.
 """
 
 __author__ = 'Surendra Reddy'
 __version__ = '1.0'
 __maintainer__ = 'Surendra Reddy'
 __email__ = 'surendraelectronics@gmail.com'
-__status__ = 'Prototype'
+__status__ = 'Inprogress'
 
 print('# ' + '=' * 78)
 print('Author: ' + __author__)
@@ -38,7 +38,7 @@ hide_streamlit_style = """
 # Page Config details
 st.set_page_config(
         page_title = 'azureresourcenaming',
-        page_icon = "🌩️",
+        page_icon = "📝",
         layout = "wide",
         initial_sidebar_state = "expanded"
     )
@@ -57,8 +57,13 @@ def main():
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
         #st.write('Resource type')
-        Host_Country1 = st.selectbox('Resource type',('Resource group', '', ''))
+        #Host_Country1 = st.selectbox('Resource type',('Resource group', '', ''))
+        # attribute is a string
+        attribute = st.selectbox('Choose category', ['Select','General', 'Networking', 'Compute and Web', 'Containers', 'Databases', 'Storage', 'AI and Machine Learning', 'Analytics and IoT', 'Azure Virtual Desktop', \
+                    'Developer Tools', 'Integration', 'Management and governance', 'Migration', 'Deprecated product names'])
         #st.write('You selected:', Host_Country)
+        if attribute == 'General':
+            sector = st.selectbox('Choose type', ["API management service instance", "Management group","Managed identity","Resource group","Policy definition"])
     with col2:
         #st.write('Workload')
         Host_Country2 = st.selectbox('Workload',('myapp', '', ''))
