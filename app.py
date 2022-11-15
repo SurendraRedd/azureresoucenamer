@@ -22,7 +22,7 @@ hide_streamlit_style = """
             """
 # Page Config details
 st.set_page_config(
-        page_title = 'azureresourcenaming',
+        page_title = 'AzureNamingTool',
         page_icon = "📝",
         layout = "wide",
         initial_sidebar_state = "expanded"
@@ -44,12 +44,8 @@ def main():
 
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
-        #st.write('Resource type')
-        #Host_Country1 = st.selectbox('Resource type',('Resource group', '', ''))
-        # attribute is a string
         attribute = st.selectbox('Resource type', ['Select','General', 'Networking', 'Compute and Web', 'Containers', 'Databases', 'Storage', 'AI and Machine Learning', 'Analytics and IoT', 'Azure Virtual Desktop', \
                     'Developer Tools', 'Integration', 'Management and governance', 'Migration', 'Deprecated product names'],help='Resourcetype')
-        #st.write('You selected:', Host_Country)
         if attribute == 'General':
             valuert = st.selectbox('Choose type', ["API management service instance", "Management group","Managed identity","Resource group","Policy definition"])
         if attribute == 'Networking':
@@ -59,15 +55,13 @@ def main():
                     'Network security group (NSG) security rules','Network Watcher','Private Link','Public IP address','Public IP address prefix','Route filter','Route table','Service endpoint'\
                     'Traffic Manager profile','User defined route (UDR)','Virtual network','Virtual network peering','Virtual network subnet','Virtual WAN','VPN Gateway','VPN connection','VPN site'\
                     'Virtual network gateway','Web Application Firewall (WAF) policy','Web Application Firewall (WAF) policy rule group'])
+        if attribute == 'Compute and Web':
+            pass
     with col2:
-        #st.write('Workload')
         valuewl = st.text_input('Workload','myapp',help='workload')
     with col3:
-        #st.write('Environment')
         valueev = st.text_input('Environment','prod',help='environment')
     with col4:
-        #st.write('Region')
-        #Host_Country4 = st.selectbox('Region',('West US', '', ''))
         attribute = st.selectbox('Region', ['Select','Africa','Asia Pacific','Canada','Europe','Middle East','South America','US'],help='region')
         if attribute == 'Africa':
             valuere = st.selectbox('Choose region', ["South Africa North", "South Africa West"])
@@ -89,9 +83,8 @@ def main():
                         "South Central US","West Central US","West US","West US 2","West US 3"])
 
     with col5:
-        #st.write('Instance')
-        #Host_Country5 = st.selectbox('Instance',('1', '', ''))
         valueit = str(st.number_input('Instance',1,help='instance'))
+        #valueit = str(st.slider('Instance',1,20,disabled=False,help='instance')) -> Slider input
 
     st.write('---')
     final = valuert + '-' + valuewl + '-' + valueev + '-' + valuere + '-' + valueit
