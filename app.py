@@ -34,7 +34,7 @@ def main():
     """
     st.markdown(html_temp, unsafe_allow_html=True)
 
-    st.header("Azure Resource Naming Tool")
+    st.header("⛈Azure Resource Naming Tool")
     st.write("A simple tool to help you name your Azure resources, based on the [Cloud Adoption Framework naming convention](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)")
 
     st.write('---')
@@ -49,14 +49,24 @@ def main():
         if attribute == 'General':
             valuert = st.selectbox('Choose type', ["API management service instance", "Management group","Managed identity","Resource group","Policy definition"])
         if attribute == 'Networking':
-            valuert = st.selectbox('Choose type',['Application gateway','Application security group (ASG)','Bastion','CDN profile','CDN endpoint'\
-                    'Connections','DNS','DNS zone','Firewall','Firewall policy','ExpressRoute circuit','Front Door instance','Front Door firewall policy'\
-                    'Load balancer (internal)','Load balancer (external)','Load balancer rule','Local network gateway','NAT gateway','Network interface (NIC)','Network security group (NSG)'\
-                    'Network security group (NSG) security rules','Network Watcher','Private Link','Public IP address','Public IP address prefix','Route filter','Route table','Service endpoint'\
-                    'Traffic Manager profile','User defined route (UDR)','Virtual network','Virtual network peering','Virtual network subnet','Virtual WAN','VPN Gateway','VPN connection','VPN site'\
+            valuert = st.selectbox('Choose type',['Application gateway','Application security group (ASG)','Bastion','CDN profile','CDN endpoint',\
+                    'Connections','DNS','DNS zone','Firewall','Firewall policy','ExpressRoute circuit','Front Door instance','Front Door firewall policy',\
+                    'Load balancer (internal)','Load balancer (external)','Load balancer rule','Local network gateway','NAT gateway','Network interface (NIC)','Network security group (NSG)',\
+                    'Network security group (NSG) security rules','Network Watcher','Private Link','Public IP address','Public IP address prefix','Route filter','Route table','Service endpoint',\
+                    'Traffic Manager profile','User defined route (UDR)','Virtual network','Virtual network peering','Virtual network subnet','Virtual WAN','VPN Gateway','VPN connection','VPN site',\
                     'Virtual network gateway','Web Application Firewall (WAF) policy','Web Application Firewall (WAF) policy rule group'])
         if attribute == 'Compute and Web':
-            pass
+            valuert = st.selectbox('Choose type',['App Service environment','App Service plan','Availability set','Azure Arc enabled server','Azure Arc enabled Kubernetes cluster',\
+                    'Cloud service','Disk encryption set','Function app','Gallery','Managed disk (OS)','Managed disk (data)','Notification Hubs','Notification Hubs namespace',\
+                    'Snapshot','Static web app','Virtual machine','Virtual machine scale set','VM storage account','Web app'])
+        if attribute == 'Containers':
+            valuert = st.selectbox('Choose type', ["AKS cluster", "Container registry","Container instance","Service Fabric cluster"])
+        if attribute == 'Databases':
+            valuert = st.selectbox('Choose type', ["Azure Cosmos DB database", "Azure Cache for Redis instance","Azure SQL Database server","Azure SQL database",\
+                    'Azure Synapse Analytics','Azure Synapse Analytics Workspaces','Azure Synapse Analytics SQL Dedicated Pool','Azure Synapse Analytics Spark Pool',\
+                    'MySQL database','PostgreSQL database','SQL Server Stretch Database','SQL Managed Instance'])
+        if attribute == 'Storage':
+            valuert = st.selectbox('Choose type', ['Storage account','Azure StorSimple'])
     with col2:
         valuewl = st.text_input('Workload','myapp',help='workload')
     with col3:
@@ -90,7 +100,8 @@ def main():
     final = valuert + '-' + valuewl + '-' + valueev + '-' + valuere + '-' + valueit
 
     st.subheader('Resource Name')
-    st.text_area('FinalName',final,help="Final Resource Name")                     
+    #st.text_area('FinalName',final,help="Final Resource Name")
+    st.code(final, language="batch")                     
 
 # main function call
 if __name__ == '__main__':
