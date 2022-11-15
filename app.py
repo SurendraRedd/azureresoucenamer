@@ -67,6 +67,22 @@ def main():
                     'MySQL database','PostgreSQL database','SQL Server Stretch Database','SQL Managed Instance'])
         if attribute == 'Storage':
             valuert = st.selectbox('Choose type', ['Storage account','Azure StorSimple'])
+        if attribute == 'AI and Machine Learning':
+            valuert = st.selectbox('Choose type', ["Azure Cognitive Search", "Azure Cognitive Services","Azure Machine Learning workspace"])
+        if attribute == 'Analytics and IoT':
+            valuert = st.selectbox('Choose type', [])
+        if attribute == 'Azure Virtual Desktop':
+            valuert = st.selectbox('Choose type', [])
+        if attribute == 'Developer tools':
+            valuert = st.selectbox('Choose type', [])
+        if attribute == 'Integration':
+            valuert = st.selectbox('Choose type', [])
+        if attribute == 'Management and governance':
+            valuert = st.selectbox('Choose type', [])
+        if attribute == 'Migration':
+            valuert = st.selectbox('Choose type', [])
+        if attribute == 'Deprecated product names':
+            valuert = st.selectbox('Choose type', [])
     with col2:
         valuewl = st.text_input('Workload','myapp',help='workload')
     with col3:
