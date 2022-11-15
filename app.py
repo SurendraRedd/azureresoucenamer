@@ -23,7 +23,7 @@ hide_streamlit_style = """
 # Page Config details
 st.set_page_config(
         page_title = 'AzureNamingTool',
-        page_icon = "📝",
+        page_icon = "🅰",
         layout = "wide",
         initial_sidebar_state = "expanded"
     )
@@ -90,7 +90,7 @@ def main():
     final = valuert + '-' + valuewl + '-' + valueev + '-' + valuere + '-' + valueit
 
     st.subheader('Resource Name')
-    st.text_area('',final,help="Final Resource Name")                     
+    st.text_area('FinalName',final,help="Final Resource Name")                     
 
 # main function call
 if __name__ == '__main__':
