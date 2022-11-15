@@ -34,7 +34,7 @@ def main():
     """
     st.markdown(html_temp, unsafe_allow_html=True)
 
-    st.header("Azure Resource Namer")
+    st.header("Azure Resource Naming Tool")
     st.write("A simple tool to help you name your Azure resources, based on the [Cloud Adoption Framework naming convention](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)")
 
     st.write('---')
