@@ -39,6 +39,8 @@ def main():
 
     st.write('---')
     final = ''
+    valuewl = valueev = valueit = ""
+    valuert = valuere = "default"
 
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
@@ -50,6 +52,13 @@ def main():
         #st.write('You selected:', Host_Country)
         if attribute == 'General':
             valuert = st.selectbox('Choose type', ["API management service instance", "Management group","Managed identity","Resource group","Policy definition"])
+        if attribute == 'Networking':
+            valuert = st.selectbox('Choose type',['Application gateway','Application security group (ASG)','Bastion','CDN profile','CDN endpoint'\
+                    'Connections','DNS','DNS zone','Firewall','Firewall policy','ExpressRoute circuit','Front Door instance','Front Door firewall policy'\
+                    'Load balancer (internal)','Load balancer (external)','Load balancer rule','Local network gateway','NAT gateway','Network interface (NIC)','Network security group (NSG)'\
+                    'Network security group (NSG) security rules','Network Watcher','Private Link','Public IP address','Public IP address prefix','Route filter','Route table','Service endpoint'\
+                    'Traffic Manager profile','User defined route (UDR)','Virtual network','Virtual network peering','Virtual network subnet','Virtual WAN','VPN Gateway','VPN connection','VPN site'\
+                    'Virtual network gateway','Web Application Firewall (WAF) policy','Web Application Firewall (WAF) policy rule group'])
     with col2:
         #st.write('Workload')
         valuewl = st.text_input('Workload','myapp',help='workload')
@@ -82,10 +91,10 @@ def main():
     with col5:
         #st.write('Instance')
         #Host_Country5 = st.selectbox('Instance',('1', '', ''))
-        valueit = st.number_input('Instance',1,help='instance')   
+        valueit = str(st.number_input('Instance',1,help='instance'))
 
     st.write('---')
-    final = "valuert" + '-' + valuewl + '-' + valueev + '-' + valuere + '-' + valueit
+    final = valuert + '-' + valuewl + '-' + valueev + '-' + valuere + '-' + valueit
 
     st.subheader('Resource Name')
     st.text_area('',final,help="Final Resource Name")                     
