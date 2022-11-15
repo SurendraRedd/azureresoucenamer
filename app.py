@@ -70,7 +70,7 @@ def main():
         if attribute == 'AI and Machine Learning':
             valuert = st.selectbox('Choose type', ["Azure Cognitive Search", "Azure Cognitive Services","Azure Machine Learning workspace"])
         if attribute == 'Analytics and IoT':
-            valuert = st.selectbox('Choose type', [])
+            valuert = st.selectbox('Choose type', ['Azure Analysis Services server','Azure Databricks workspace','Azure Stream Analytics'])
         if attribute == 'Azure Virtual Desktop':
             valuert = st.selectbox('Choose type', [])
         if attribute == 'Developer tools':
