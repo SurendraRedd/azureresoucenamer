@@ -42,6 +42,22 @@ def main():
     valuewl = valueev = valueit = ""
     valuert = valuere = "default"
 
+    CHOICES = {1: "dataset a", 2: "dataset b", 3: "dataset c"}
+
+
+    def format_func(option):
+        return CHOICES[option]
+
+
+    #option = st.selectbox("Select option", options=list(CHOICES.keys()), format_func=format_func)
+    option = st.selectbox('Select option', CHOICES.keys(), format_func=lambda x:CHOICES[ x ])
+    st.write(f"You selected option {option} called {format_func(option)}")
+
+    display = ("male", "female")
+    options = list(range(len(display)))
+    value = st.selectbox("gender", options, format_func=lambda x: display[x])
+    st.write(value)
+
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
         attribute = st.selectbox('Resource type', ['Select','General', 'Networking', 'Compute and Web', 'Containers', 'Databases', 'Storage', 'AI and Machine Learning', 'Analytics and IoT', 'Azure Virtual Desktop', \
