@@ -40,41 +40,27 @@ def main():
     st.write('---')
     final = ''
     valuewl = valueev = valueit = ""
-    valuert = valuere = "Resource group"
+    valuert = "rg"
+    valuere = "westus"
 
-#    CHOICES = {1: "dataset a", 2: "dataset b", 3: "dataset c"}
     GENERAL = {"API management service instance":"apim","Management group":"mg","Managed identity":"id","Resource group":"rg","Policy definition":"policy"}
+    NETWORKING = {'Application gateway':'agw','Application security group (ASG)':'asg','Bastion':'bas','CDN profile':'cdnp','CDN endpoint':'cdne',\
+                    'Connections':'con','DNS':'dnsz','DNS zone':'pdnsz','Firewall':'afw','Firewall policy':'afwp','ExpressRoute circuit':'erc','Front Door instance':'fd','Front Door firewall policy':'fdfp',\
+                    'Load balancer (internal)':'lbi','Load balancer (external)':'lbe','Load balancer rule':'rule','Local network gateway':'lgw','NAT gateway':'ng','Network interface (NIC)':'nic','Network security group (NSG)':'nsg',\
+                    'Network security group (NSG) security rules':'nsgsr','Network Watcher':'nw','Private Link':'pl','Public IP address':'pip','Public IP address prefix':'ippre','Route filter':'rf','Route table':'rt','Service endpoint':'se',\
+                    'Traffic Manager profile':'traf','User defined route (UDR)':'udr','Virtual network':'vnet','Virtual network peering':'peer','Virtual network subnet':'snet','Virtual WAN':'vwan','VPN Gateway':'vpng','VPN connection':'vcn','VPN site':'vst',\
+                    'Virtual network gateway':'vgw','Web Application Firewall (WAF) policy':'waf','Web Application Firewall (WAF) policy rule group':'wafrg'}
     
-    #def format_func(option,optionvalue):
-    #    if optionvalue == 'General':
-    #        val= GENERAL[option]
-    #    else:
-    #        pass
-    #    print('val is :', val)
-    #    return val
-
-    #option = st.selectbox("Select option", options=list(CHOICES.keys()), format_func=format_func)
-#   option = st.selectbox('Select option', CHOICES.keys(), format_func=lambda x:CHOICES[ x ])
-#   st.write(f"You selected option {option} called {format_func(option)}")
-
-    
-    #value = st.selectbox("gender", options, format_func=lambda x: display[x])
-    #st.write(value)
-
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
         attribute = st.selectbox('Resource type', ['Select','General', 'Networking', 'Compute and Web', 'Containers', 'Databases', 'Storage', 'AI and Machine Learning', 'Analytics and IoT', 'Azure Virtual Desktop', \
                     'Developer Tools', 'Integration', 'Management and governance', 'Migration', 'Deprecated product names'],help='Resourcetype')
         if attribute == 'General':
-            valuert= st.selectbox('Choose type', options=list(GENERAL.keys()), format_func=lambda x:GENERAL[ x ])
-            st.write(valuert)
+            valuert= st.selectbox('Choose type', options=list(GENERAL.keys()))
+            valuert = GENERAL.get(valuert)
         if attribute == 'Networking':
-            valuert = st.selectbox('Choose type',['Application gateway','Application security group (ASG)','Bastion','CDN profile','CDN endpoint',\
-                    'Connections','DNS','DNS zone','Firewall','Firewall policy','ExpressRoute circuit','Front Door instance','Front Door firewall policy',\
-                    'Load balancer (internal)','Load balancer (external)','Load balancer rule','Local network gateway','NAT gateway','Network interface (NIC)','Network security group (NSG)',\
-                    'Network security group (NSG) security rules','Network Watcher','Private Link','Public IP address','Public IP address prefix','Route filter','Route table','Service endpoint',\
-                    'Traffic Manager profile','User defined route (UDR)','Virtual network','Virtual network peering','Virtual network subnet','Virtual WAN','VPN Gateway','VPN connection','VPN site',\
-                    'Virtual network gateway','Web Application Firewall (WAF) policy','Web Application Firewall (WAF) policy rule group'])
+            valuert = st.selectbox('Choose type',options=list(NETWORKING.keys()))
+            valuert = NETWORKING.get(valuert)
         if attribute == 'Compute and Web':
             valuert = st.selectbox('Choose type',['App Service environment','App Service plan','Availability set','Azure Arc enabled server','Azure Arc enabled Kubernetes cluster',\
                     'Cloud service','Disk encryption set','Function app','Gallery','Managed disk (OS)','Managed disk (data)','Notification Hubs','Notification Hubs namespace',\
@@ -142,7 +128,7 @@ def main():
 
     st.subheader('Resource Name')
     #st.text_area('FinalName',final,help="Final Resource Name")
-    st.code(final, language="batch")                     
+    st.code(final, language="python")                     
 
 # main function call
 if __name__ == '__main__':
