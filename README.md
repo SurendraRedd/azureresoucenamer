@@ -9,3 +9,5 @@ https://docs.streamlit.io/library/cheatsheet
 
 GitPod Workspace Details:
 https://gitpod.io/workspaces/
+
+[![Gitter](https://badges.gitter.im/discussions2021/community.svg)](https://gitter.im/discussions2021/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
