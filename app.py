@@ -35,13 +35,12 @@ def main():
     """
     st.markdown(html_temp, unsafe_allow_html=True)
 
-    st.header("📘Azure Resource Naming Tool")
+    st.header("📘Azure Resource Naming Tool")    
+    st.write("A simple tool to help you name your Azure resources, based on the [Cloud Adoption Framework naming convention](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)")
     with st.expander('Demo'):
         # Embed a youtube video
         st_player("https://youtu.be/5p-z_-6T57g")
-    st.write("A simple tool to help you name your Azure resources, based on the [Cloud Adoption Framework naming convention](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)")
 
-    st.write('---')
     final = ''
     valuewl = valueev = valueit = ""
     valuert = "default"
@@ -162,13 +161,14 @@ def main():
 
     st.subheader('Resource Name')
     #st.text_area('FinalName',final,help="Final Resource Name")
-    st.code(final, language="python")                     
+    st.code(final, language="python")
+    st.write('\n')                     
 
-    URL = 'https://surendraredd-randompassword.streamlit.app/'
+    URL = 'https://azureresoucenamer.streamlit.app/'
     with st.expander('Share This Tool'):
         st.write(URL)
         st.markdown(f'''
-                <a href={URL}><button style="background-color:LightBlue;">RandompasswordTool</button></a>
+                <a href={URL}><button style="background-color:LightBlue;">AzureResourceNamingTool</button></a>
                 ''',
                 unsafe_allow_html=True)
 
