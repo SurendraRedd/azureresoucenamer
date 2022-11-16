@@ -1,4 +1,7 @@
 """
+Azure Resource Naming Application using streamlit
+Author: Surendra Reddy
+
 This application contains the code related to the
 Azure Resource Namer application.
 """
