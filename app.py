@@ -40,30 +40,34 @@ def main():
     st.write('---')
     final = ''
     valuewl = valueev = valueit = ""
-    valuert = valuere = "default"
+    valuert = valuere = "Resource group"
 
-    CHOICES = {1: "dataset a", 2: "dataset b", 3: "dataset c"}
-
-
-    def format_func(option):
-        return CHOICES[option]
-
+#    CHOICES = {1: "dataset a", 2: "dataset b", 3: "dataset c"}
+    GENERAL = {"API management service instance":"apim","Management group":"mg","Managed identity":"id","Resource group":"rg","Policy definition":"policy"}
+    
+    #def format_func(option,optionvalue):
+    #    if optionvalue == 'General':
+    #        val= GENERAL[option]
+    #    else:
+    #        pass
+    #    print('val is :', val)
+    #    return val
 
     #option = st.selectbox("Select option", options=list(CHOICES.keys()), format_func=format_func)
-    option = st.selectbox('Select option', CHOICES.keys(), format_func=lambda x:CHOICES[ x ])
-    st.write(f"You selected option {option} called {format_func(option)}")
+#   option = st.selectbox('Select option', CHOICES.keys(), format_func=lambda x:CHOICES[ x ])
+#   st.write(f"You selected option {option} called {format_func(option)}")
 
-    display = ("male", "female")
-    options = list(range(len(display)))
-    value = st.selectbox("gender", options, format_func=lambda x: display[x])
-    st.write(value)
+    
+    #value = st.selectbox("gender", options, format_func=lambda x: display[x])
+    #st.write(value)
 
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
         attribute = st.selectbox('Resource type', ['Select','General', 'Networking', 'Compute and Web', 'Containers', 'Databases', 'Storage', 'AI and Machine Learning', 'Analytics and IoT', 'Azure Virtual Desktop', \
                     'Developer Tools', 'Integration', 'Management and governance', 'Migration', 'Deprecated product names'],help='Resourcetype')
         if attribute == 'General':
-            valuert = st.selectbox('Choose type', ["API management service instance", "Management group","Managed identity","Resource group","Policy definition"])
+            valuert= st.selectbox('Choose type', options=list(GENERAL.keys()), format_func=lambda x:GENERAL[ x ])
+            st.write(valuert)
         if attribute == 'Networking':
             valuert = st.selectbox('Choose type',['Application gateway','Application security group (ASG)','Bastion','CDN profile','CDN endpoint',\
                     'Connections','DNS','DNS zone','Firewall','Firewall policy','ExpressRoute circuit','Front Door instance','Front Door firewall policy',\
@@ -86,19 +90,24 @@ def main():
         if attribute == 'AI and Machine Learning':
             valuert = st.selectbox('Choose type', ["Azure Cognitive Search", "Azure Cognitive Services","Azure Machine Learning workspace"])
         if attribute == 'Analytics and IoT':
-            valuert = st.selectbox('Choose type', ['Azure Analysis Services server','Azure Databricks workspace','Azure Stream Analytics'])
+            valuert = st.selectbox('Choose type', ['Azure Analysis Services server','Azure Databricks workspace','Azure Stream Analytics','Azure Data Explorer cluster',\
+                        'Azure Data Explorer cluster database','Azure Data Factory','Data Lake Store account','Data Lake Analytics account','Event Hubs namespace',\
+                        'Event hub','Event Grid domain','Event Grid subscriptions','Event Grid topic','HDInsight - Hadoop cluster','HDInsight - HBase cluster',\
+                        'HDInsight - Kafka cluster','HDInsight - Spark cluster','HDInsight - Storm cluster','HDInsight - ML Services cluster','IoT hub',\
+                        'Provisioning services','Provisioning services certificate','Power BI Embedded','Time Series Insights environment'])
         if attribute == 'Azure Virtual Desktop':
-            valuert = st.selectbox('Choose type', [])
+            valuert = st.selectbox('Choose type', ['Virtual desktop host pool','Virtual desktop application group','Virtual desktop workspace'])
         if attribute == 'Developer tools':
-            valuert = st.selectbox('Choose type', [])
+            valuert = st.selectbox('Choose type', ['App Configuration store','SignalR'])
         if attribute == 'Integration':
-            valuert = st.selectbox('Choose type', [])
+            valuert = st.selectbox('Choose type', ['Integration account','Logic apps','Service Bus','Service Bus queue','Service Bus topic'])
         if attribute == 'Management and governance':
-            valuert = st.selectbox('Choose type', [])
+            valuert = st.selectbox('Choose type', ['Automation account','Application Insights','Azure Monitor action group','Azure Purview instance',\
+                        'Blueprint','Blueprint assignment','Key vault','Log Analytics workspace'])
         if attribute == 'Migration':
-            valuert = st.selectbox('Choose type', [])
+            valuert = st.selectbox('Choose type', ['Azure Migrate project','Database Migration Service instance','Recovery Services vault'])
         if attribute == 'Deprecated product names':
-            valuert = st.selectbox('Choose type', [])
+            valuert = st.selectbox('Choose type', ['Azure SQL Data Warehouse'])
     with col2:
         valuewl = st.text_input('Workload','myapp',help='workload')
     with col3:
