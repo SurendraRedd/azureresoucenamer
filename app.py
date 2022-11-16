@@ -168,12 +168,15 @@ def main():
     st.write('\n')                     
 
     URL = 'https://azureresoucenamer.streamlit.app/'
+    PRJ = 'https://github.com/users/SurendraRedd/projects/4'
     with st.expander('Share This Tool'):
         st.write(URL)
         st.markdown(f'''
                 <a href={URL}><button style="background-color:LightBlue;">AzureResourceNamingTool</button></a>
                 ''',
                 unsafe_allow_html=True)
+    with st.expander('Raise an Issue'):
+        st.write(PRJ)
 
 
 # main function call
