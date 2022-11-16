@@ -13,12 +13,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FIRST_ISSUE: |
             👋 @{{ author }}
-             Thanks for opening your first issue here! Be sure to follow the issue template!
-
+             Thanks for opening your first issue here!
           FIRST_PR: |
             👋 @{{ author }}
-            Thanks for opening this pull request! Please check out our contributing guidelines.
+            Thanks for opening this pull request!
 
           FIRST_PR_MERGED: |
             🎉 @{{ author }}
-            Congrats on merging your first pull request! We here at behaviorbot are proud of you!
+            Congrats on merging your first pull request!
