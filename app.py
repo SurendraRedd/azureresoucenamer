@@ -50,6 +50,9 @@ def main():
                     'Network security group (NSG) security rules':'nsgsr','Network Watcher':'nw','Private Link':'pl','Public IP address':'pip','Public IP address prefix':'ippre','Route filter':'rf','Route table':'rt','Service endpoint':'se',\
                     'Traffic Manager profile':'traf','User defined route (UDR)':'udr','Virtual network':'vnet','Virtual network peering':'peer','Virtual network subnet':'snet','Virtual WAN':'vwan','VPN Gateway':'vpng','VPN connection':'vcn','VPN site':'vst',\
                     'Virtual network gateway':'vgw','Web Application Firewall (WAF) policy':'waf','Web Application Firewall (WAF) policy rule group':'wafrg'}
+    COMPUTE_WEB = {'App Service environment':'ase','App Service plan':'plan','Availability set':'avail','Azure Arc enabled server':'arcs','Azure Arc enabled Kubernetes cluster':'arck',\
+                    'Cloud service':'cld','Disk encryption set':'des','Function app':'func','Gallery':'gal','Managed disk (OS)':'osdisk','Managed disk (data)':'disk','Notification Hubs':'ntf','Notification Hubs namespace':'ntfns',\
+                    'Snapshot':'snap','Static web app':'stapp','Virtual machine':'vm','Virtual machine scale set':'vmss','VM storage account':'stvm','Web app':'app'}
     
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
@@ -62,9 +65,7 @@ def main():
             valuert = st.selectbox('Choose type',options=list(NETWORKING.keys()))
             valuert = NETWORKING.get(valuert)
         if attribute == 'Compute and Web':
-            valuert = st.selectbox('Choose type',['App Service environment','App Service plan','Availability set','Azure Arc enabled server','Azure Arc enabled Kubernetes cluster',\
-                    'Cloud service','Disk encryption set','Function app','Gallery','Managed disk (OS)','Managed disk (data)','Notification Hubs','Notification Hubs namespace',\
-                    'Snapshot','Static web app','Virtual machine','Virtual machine scale set','VM storage account','Web app'])
+            valuert = st.selectbox('Choose type',)
         if attribute == 'Containers':
             valuert = st.selectbox('Choose type', ["AKS cluster", "Container registry","Container instance","Service Fabric cluster"])
         if attribute == 'Databases':
