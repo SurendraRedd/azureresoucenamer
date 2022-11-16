@@ -34,14 +34,14 @@ def main():
     """
     st.markdown(html_temp, unsafe_allow_html=True)
 
-    st.header("⛈Azure Resource Naming Tool")
+    st.header("📘Azure Resource Naming Tool")
     st.write("A simple tool to help you name your Azure resources, based on the [Cloud Adoption Framework naming convention](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)")
 
     st.write('---')
     final = ''
     valuewl = valueev = valueit = ""
-    valuert = "rg"
-    valuere = "westus"
+    valuert = "default"
+    valuere = "default"
 
     GENERAL = {"API management service instance":"apim","Management group":"mg","Managed identity":"id","Resource group":"rg","Policy definition":"policy"}
     NETWORKING = {'Application gateway':'agw','Application security group (ASG)':'asg','Bastion':'bas','CDN profile':'cdnp','CDN endpoint':'cdne',\
@@ -52,8 +52,25 @@ def main():
                     'Virtual network gateway':'vgw','Web Application Firewall (WAF) policy':'waf','Web Application Firewall (WAF) policy rule group':'wafrg'}
     COMPUTE_WEB = {'App Service environment':'ase','App Service plan':'plan','Availability set':'avail','Azure Arc enabled server':'arcs','Azure Arc enabled Kubernetes cluster':'arck',\
                     'Cloud service':'cld','Disk encryption set':'des','Function app':'func','Gallery':'gal','Managed disk (OS)':'osdisk','Managed disk (data)':'disk','Notification Hubs':'ntf','Notification Hubs namespace':'ntfns',\
-                    'Snapshot':'snap','Static web app':'stapp','Virtual machine':'vm','Virtual machine scale set':'vmss','VM storage account':'stvm','Web app':'app'}
-    
+                    'Snapshot':'snap','Static web app':'stapp','Virtual machine':'vm','Virtual machine scale set':'vmss','VM storage account':'stvm','Web app':'app'}    
+    CONTAINERS = {"AKS cluster":'aks', "Container registry":'cr',"Container instance":'ci',"Service Fabric cluster":'sf'}
+    DATABASES = {"Azure Cosmos DB database":'cosmos', "Azure Cache for Redis instance":'redis',"Azure SQL Database server":'sql',"Azure SQL database":'sqldb',\
+                    'Azure Synapse Analytics':'syn','Azure Synapse Analytics Workspaces':'synw','Azure Synapse Analytics SQL Dedicated Pool':'syndp','Azure Synapse Analytics Spark Pool':'synsp',\
+                    'MySQL database':'mysql','PostgreSQL database':'psql','SQL Server Stretch Database':'sqlstrdb','SQL Managed Instance':'sqlmi'}
+    STORAGE ={'Storage account':'st','Azure StorSimple':'ssimp'}
+    AIML = {"Azure Cognitive Search":'srch', "Azure Cognitive Services":'cog',"Azure Machine Learning workspace":'mlw'}
+    ANALYTICSIOT = {'Azure Analysis Services server':'as','Azure Databricks workspace':'dbw','Azure Stream Analytics':'asa','Azure Data Explorer cluster':'dec',\
+                        'Azure Data Explorer cluster database':'dedb','Azure Data Factory':'adf','Data Lake Store account':'dls','Data Lake Analytics account':'dla','Event Hubs namespace':'evhns',\
+                        'Event hub':'evh','Event Grid domain':'evgd','Event Grid subscriptions':'evgs','Event Grid topic':'evgt','HDInsight - Hadoop cluster':'hadoop','HDInsight - HBase cluster':'hbase',\
+                        'HDInsight - Kafka cluster':'kafka','HDInsight - Spark cluster':'spark','HDInsight - Storm cluster':'storm','HDInsight - ML Services cluster':'mls','IoT hub':'iot',\
+                        'Provisioning services':'provs','Provisioning services certificate':'pcert','Power BI Embedded':'pbi','Time Series Insights environment':'tsi'}
+    VIRTUALDESKTOP = {'Virtual desktop host pool':'vdpool','Virtual desktop application group':'vdag','Virtual desktop workspace':'vdws'}
+    DEVELOPERTOOLS = {'App Configuration store':'appcs','SignalR':'sigr'}
+    INTEGRATION = {'Integration account':'ia','Logic apps':'logic','Service Bus':'sb','Service Bus queue':'sbq','Service Bus topic':'sbt'}
+    MNGMTGOV={'Automation account':'aa','Application Insights':'appi','Azure Monitor action group':'ag','Azure Purview instance':'pview',\
+                        'Blueprint':'bp','Blueprint assignment':'bpa','Key vault':'kv','Log Analytics workspace':'log'}
+    MIGRATION={'Azure Migrate project':'migr','Database Migration Service instance':'dms','Recovery Services vault':'rsv'}
+    DEPRECATED={'Azure SQL Data Warehouse':'sqldw'}                    
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
         attribute = st.selectbox('Resource type', ['Select','General', 'Networking', 'Compute and Web', 'Containers', 'Databases', 'Storage', 'AI and Machine Learning', 'Analytics and IoT', 'Azure Virtual Desktop', \
@@ -65,36 +82,41 @@ def main():
             valuert = st.selectbox('Choose type',options=list(NETWORKING.keys()))
             valuert = NETWORKING.get(valuert)
         if attribute == 'Compute and Web':
-            valuert = st.selectbox('Choose type',)
+            valuert = st.selectbox('Choose type',options=list(COMPUTE_WEB.keys()))
+            valuert = COMPUTE_WEB.get(valuert)
         if attribute == 'Containers':
-            valuert = st.selectbox('Choose type', ["AKS cluster", "Container registry","Container instance","Service Fabric cluster"])
+            valuert = st.selectbox('Choose type', options=list(CONTAINERS.keys()))
+            valuert = CONTAINERS.get(valuert)
         if attribute == 'Databases':
-            valuert = st.selectbox('Choose type', ["Azure Cosmos DB database", "Azure Cache for Redis instance","Azure SQL Database server","Azure SQL database",\
-                    'Azure Synapse Analytics','Azure Synapse Analytics Workspaces','Azure Synapse Analytics SQL Dedicated Pool','Azure Synapse Analytics Spark Pool',\
-                    'MySQL database','PostgreSQL database','SQL Server Stretch Database','SQL Managed Instance'])
+            valuert = st.selectbox('Choose type', options=list(DATABASES.keys()))
+            valuert = DATABASES.get(valuert)
         if attribute == 'Storage':
-            valuert = st.selectbox('Choose type', ['Storage account','Azure StorSimple'])
+            valuert = st.selectbox('Choose type', options=list(STORAGE.keys()))
+            valuert = STORAGE.get(valuert)
         if attribute == 'AI and Machine Learning':
-            valuert = st.selectbox('Choose type', ["Azure Cognitive Search", "Azure Cognitive Services","Azure Machine Learning workspace"])
+            valuert = st.selectbox('Choose type', options=list(AIML.keys()))
+            valuert = AIML.get(valuert)
         if attribute == 'Analytics and IoT':
-            valuert = st.selectbox('Choose type', ['Azure Analysis Services server','Azure Databricks workspace','Azure Stream Analytics','Azure Data Explorer cluster',\
-                        'Azure Data Explorer cluster database','Azure Data Factory','Data Lake Store account','Data Lake Analytics account','Event Hubs namespace',\
-                        'Event hub','Event Grid domain','Event Grid subscriptions','Event Grid topic','HDInsight - Hadoop cluster','HDInsight - HBase cluster',\
-                        'HDInsight - Kafka cluster','HDInsight - Spark cluster','HDInsight - Storm cluster','HDInsight - ML Services cluster','IoT hub',\
-                        'Provisioning services','Provisioning services certificate','Power BI Embedded','Time Series Insights environment'])
+            valuert = st.selectbox('Choose type', options=list(ANALYTICSIOT.keys()))
+            valuert = ANALYTICSIOT.get(valuert)
         if attribute == 'Azure Virtual Desktop':
-            valuert = st.selectbox('Choose type', ['Virtual desktop host pool','Virtual desktop application group','Virtual desktop workspace'])
+            valuert = st.selectbox('Choose type', options=list(VIRTUALDESKTOP.keys()))
+            valuert = VIRTUALDESKTOP.get(valuert)
         if attribute == 'Developer tools':
-            valuert = st.selectbox('Choose type', ['App Configuration store','SignalR'])
+            valuert = st.selectbox('Choose type', options=list(DEVELOPERTOOLS.keys()))
+            valuert = DEVELOPERTOOLS.get(valuert)
         if attribute == 'Integration':
-            valuert = st.selectbox('Choose type', ['Integration account','Logic apps','Service Bus','Service Bus queue','Service Bus topic'])
+            valuert = st.selectbox('Choose type', options=list(INTEGRATION.keys()))
+            valuert = INTEGRATION.get(valuert)
         if attribute == 'Management and governance':
-            valuert = st.selectbox('Choose type', ['Automation account','Application Insights','Azure Monitor action group','Azure Purview instance',\
-                        'Blueprint','Blueprint assignment','Key vault','Log Analytics workspace'])
+            valuert = st.selectbox('Choose type', options=list(MNGMTGOV.keys()))
+            valuert = MNGMTGOV.get(valuert)
         if attribute == 'Migration':
-            valuert = st.selectbox('Choose type', ['Azure Migrate project','Database Migration Service instance','Recovery Services vault'])
+            valuert = st.selectbox('Choose type', options=list(MIGRATION.keys()))
+            valuert = MIGRATION.get(valuert)
         if attribute == 'Deprecated product names':
-            valuert = st.selectbox('Choose type', ['Azure SQL Data Warehouse'])
+            valuert = st.selectbox('Choose type', options=list(DEPRECATED.keys()))
+            valuert = DEPRECATED.get(valuert)
     with col2:
         valuewl = st.text_input('Workload','myapp',help='workload')
     with col3:
@@ -103,22 +125,29 @@ def main():
         attribute = st.selectbox('Region', ['Select','Africa','Asia Pacific','Canada','Europe','Middle East','South America','US'],help='region')
         if attribute == 'Africa':
             valuere = st.selectbox('Choose region', ["South Africa North", "South Africa West"])
+            valuere = valuere.replace(" ", "").lower()
         if attribute == 'Asia Pacific':
             valuere = st.selectbox('Choose region', ["Australia Central", "Australia Central 2","Australia East","Australia Southeast",\
                         "Central India","East Asia","Japan East","Japan West","Jio India Central","Jio India West","Korea Central",\
                         "Korea South","Southeast Asia","South India","West India"])
+            valuere = valuere.replace(" ", "").lower()
         if attribute == 'Canada':
             valuere = st.selectbox('Choose region', ["Canada Central", "Canada East"])
+            valuere = valuere.replace(" ", "").lower()
         if attribute == 'Europe':
             valuere = st.selectbox('Choose region', ["France Central", "France South", "Germany North", "Germany West Central", "North Europe",\
                         "Norway East","Norway West","Sweden Central","Switzerland North","Switzerland West","UK South","UK West","West Europe"])
+            valuere = valuere.replace(" ", "").lower()
         if attribute == 'Middle East':
             valuere = st.selectbox('Choose region', ["UAE Central", "UAE North"])
+            valuere = valuere.replace(" ", "").lower()
         if attribute == 'South America':
             valuere = st.selectbox('Choose region', ["Brazil South", "Brazil Southeast"])
+            valuere = valuere.replace(" ", "").lower()
         if attribute == 'US':
             valuere = st.selectbox('Choose region', ["Central US", "Central US EUAP","East US","East US 2","East US 2 EUAP","North Central US",\
                         "South Central US","West Central US","West US","West US 2","West US 3"])
+            valuere = valuere.replace(" ", "").lower()
 
     with col5:
         valueit = str(st.number_input('Instance',1,help='instance'))
