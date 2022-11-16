@@ -179,6 +179,9 @@ def main():
     with st.expander('Raise an Issue'):
         st.write(PRJ)
         st.write(DIS)
+        st.markdown(f'''
+                [![Gitter](https://badges.gitter.im/discussions2021/community.svg)](https://gitter.im/discussions2021/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+                ''',unsafe_allow_html=True)
 
 
 # main function call
