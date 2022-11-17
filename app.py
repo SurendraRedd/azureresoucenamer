@@ -51,6 +51,7 @@ def main():
     with st.expander('Demo'):
         # Embed a youtube video
         st_player("https://youtu.be/5p-z_-6T57g")
+        st.image('streamlit-app-2022-11-17-00-11-60.gif')
 
     final = ''
     valuewl = valueev = valueit = ""
