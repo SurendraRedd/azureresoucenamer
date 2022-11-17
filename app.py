@@ -84,96 +84,99 @@ def main():
     MNGMTGOV={'Automation account':'aa','Application Insights':'appi','Azure Monitor action group':'ag','Azure Purview instance':'pview',\
                         'Blueprint':'bp','Blueprint assignment':'bpa','Key vault':'kv','Log Analytics workspace':'log'}
     MIGRATION={'Azure Migrate project':'migr','Database Migration Service instance':'dms','Recovery Services vault':'rsv'}
-    DEPRECATED={'Azure SQL Data Warehouse':'sqldw'}                    
-    col1, col2, col3, col4, col5 = st.columns(5)
-    with col1:
-        attribute = st.selectbox('Resource type', ['Select','General', 'Networking', 'Compute and Web', 'Containers', 'Databases', 'Storage', 'AI and Machine Learning', 'Analytics and IoT', 'Azure Virtual Desktop', \
-                    'Developer Tools', 'Integration', 'Management and governance', 'Migration', 'Deprecated product names'],help='Resourcetype')
-        if attribute == 'General':
-            valuert= st.selectbox('Choose type', options=list(GENERAL.keys()))
-            valuert = GENERAL.get(valuert)
-        if attribute == 'Networking':
-            valuert = st.selectbox('Choose type',options=list(NETWORKING.keys()))
-            valuert = NETWORKING.get(valuert)
-        if attribute == 'Compute and Web':
-            valuert = st.selectbox('Choose type',options=list(COMPUTE_WEB.keys()))
-            valuert = COMPUTE_WEB.get(valuert)
-        if attribute == 'Containers':
-            valuert = st.selectbox('Choose type', options=list(CONTAINERS.keys()))
-            valuert = CONTAINERS.get(valuert)
-        if attribute == 'Databases':
-            valuert = st.selectbox('Choose type', options=list(DATABASES.keys()))
-            valuert = DATABASES.get(valuert)
-        if attribute == 'Storage':
-            valuert = st.selectbox('Choose type', options=list(STORAGE.keys()))
-            valuert = STORAGE.get(valuert)
-        if attribute == 'AI and Machine Learning':
-            valuert = st.selectbox('Choose type', options=list(AIML.keys()))
-            valuert = AIML.get(valuert)
-        if attribute == 'Analytics and IoT':
-            valuert = st.selectbox('Choose type', options=list(ANALYTICSIOT.keys()))
-            valuert = ANALYTICSIOT.get(valuert)
-        if attribute == 'Azure Virtual Desktop':
-            valuert = st.selectbox('Choose type', options=list(VIRTUALDESKTOP.keys()))
-            valuert = VIRTUALDESKTOP.get(valuert)
-        if attribute == 'Developer tools':
-            valuert = st.selectbox('Choose type', options=list(DEVELOPERTOOLS.keys()))
-            valuert = DEVELOPERTOOLS.get(valuert)
-        if attribute == 'Integration':
-            valuert = st.selectbox('Choose type', options=list(INTEGRATION.keys()))
-            valuert = INTEGRATION.get(valuert)
-        if attribute == 'Management and governance':
-            valuert = st.selectbox('Choose type', options=list(MNGMTGOV.keys()))
-            valuert = MNGMTGOV.get(valuert)
-        if attribute == 'Migration':
-            valuert = st.selectbox('Choose type', options=list(MIGRATION.keys()))
-            valuert = MIGRATION.get(valuert)
-        if attribute == 'Deprecated product names':
-            valuert = st.selectbox('Choose type', options=list(DEPRECATED.keys()))
-            valuert = DEPRECATED.get(valuert)
-    with col2:
-        valuewl = st.text_input('Workload','myapp',help='workload')
-    with col3:
-        valueev = st.text_input('Environment','prod',help='environment')
-    with col4:
-        attribute = st.selectbox('Region', ['Select','Africa','Asia Pacific','Canada','Europe','Middle East','South America','US'],help='region')
-        if attribute == 'Africa':
-            valuere = st.selectbox('Choose region', ["South Africa North", "South Africa West"])
-            valuere = valuere.replace(" ", "").lower()
-        if attribute == 'Asia Pacific':
-            valuere = st.selectbox('Choose region', ["Australia Central", "Australia Central 2","Australia East","Australia Southeast",\
-                        "Central India","East Asia","Japan East","Japan West","Jio India Central","Jio India West","Korea Central",\
-                        "Korea South","Southeast Asia","South India","West India"])
-            valuere = valuere.replace(" ", "").lower()
-        if attribute == 'Canada':
-            valuere = st.selectbox('Choose region', ["Canada Central", "Canada East"])
-            valuere = valuere.replace(" ", "").lower()
-        if attribute == 'Europe':
-            valuere = st.selectbox('Choose region', ["France Central", "France South", "Germany North", "Germany West Central", "North Europe",\
-                        "Norway East","Norway West","Sweden Central","Switzerland North","Switzerland West","UK South","UK West","West Europe"])
-            valuere = valuere.replace(" ", "").lower()
-        if attribute == 'Middle East':
-            valuere = st.selectbox('Choose region', ["UAE Central", "UAE North"])
-            valuere = valuere.replace(" ", "").lower()
-        if attribute == 'South America':
-            valuere = st.selectbox('Choose region', ["Brazil South", "Brazil Southeast"])
-            valuere = valuere.replace(" ", "").lower()
-        if attribute == 'US':
-            valuere = st.selectbox('Choose region', ["Central US", "Central US EUAP","East US","East US 2","East US 2 EUAP","North Central US",\
-                        "South Central US","West Central US","West US","West US 2","West US 3"])
-            valuere = valuere.replace(" ", "").lower()
+    DEPRECATED={'Azure SQL Data Warehouse':'sqldw'}
+    maincol,maincol2 = st.columns(2)
+    with maincol:                    
+        col1, col2, col3, col4, col5 = st.columns(5)
+        with col1:
+            attribute = st.selectbox('Resource Type', ['Select','General', 'Networking', 'Compute and Web', 'Containers', 'Databases', 'Storage', 'AI and Machine Learning', 'Analytics and IoT', 'Azure Virtual Desktop', \
+                        'Developer Tools', 'Integration', 'Management and governance', 'Migration', 'Deprecated product names'],help='Resourcetype')
+            if attribute == 'General':
+                valuert= st.selectbox('Choose type', options=list(GENERAL.keys()))
+                valuert = GENERAL.get(valuert)
+            if attribute == 'Networking':
+                valuert = st.selectbox('Choose type',options=list(NETWORKING.keys()))
+                valuert = NETWORKING.get(valuert)
+            if attribute == 'Compute and Web':
+                valuert = st.selectbox('Choose type',options=list(COMPUTE_WEB.keys()))
+                valuert = COMPUTE_WEB.get(valuert)
+            if attribute == 'Containers':
+                valuert = st.selectbox('Choose type', options=list(CONTAINERS.keys()))
+                valuert = CONTAINERS.get(valuert)
+            if attribute == 'Databases':
+                valuert = st.selectbox('Choose type', options=list(DATABASES.keys()))
+                valuert = DATABASES.get(valuert)
+            if attribute == 'Storage':
+                valuert = st.selectbox('Choose type', options=list(STORAGE.keys()))
+                valuert = STORAGE.get(valuert)
+            if attribute == 'AI and Machine Learning':
+                valuert = st.selectbox('Choose type', options=list(AIML.keys()))
+                valuert = AIML.get(valuert)
+            if attribute == 'Analytics and IoT':
+                valuert = st.selectbox('Choose type', options=list(ANALYTICSIOT.keys()))
+                valuert = ANALYTICSIOT.get(valuert)
+            if attribute == 'Azure Virtual Desktop':
+                valuert = st.selectbox('Choose type', options=list(VIRTUALDESKTOP.keys()))
+                valuert = VIRTUALDESKTOP.get(valuert)
+            if attribute == 'Developer tools':
+                valuert = st.selectbox('Choose type', options=list(DEVELOPERTOOLS.keys()))
+                valuert = DEVELOPERTOOLS.get(valuert)
+            if attribute == 'Integration':
+                valuert = st.selectbox('Choose type', options=list(INTEGRATION.keys()))
+                valuert = INTEGRATION.get(valuert)
+            if attribute == 'Management and governance':
+                valuert = st.selectbox('Choose type', options=list(MNGMTGOV.keys()))
+                valuert = MNGMTGOV.get(valuert)
+            if attribute == 'Migration':
+                valuert = st.selectbox('Choose type', options=list(MIGRATION.keys()))
+                valuert = MIGRATION.get(valuert)
+            if attribute == 'Deprecated product names':
+                valuert = st.selectbox('Choose type', options=list(DEPRECATED.keys()))
+                valuert = DEPRECATED.get(valuert)
+        with col2:
+            valuewl = st.text_input('Workload/Application','myapp',help='workload or application')
+        with col3:
+            valueev = st.text_input('Environment','prod',help='environment')
+        with col4:
+            attribute = st.selectbox('Azure Region', ['Select','Africa','Asia Pacific','Canada','Europe','Middle East','South America','US'],help='region')
+            if attribute == 'Africa':
+                valuere = st.selectbox('Choose region', ["South Africa North", "South Africa West"])
+                valuere = valuere.replace(" ", "").lower()
+            if attribute == 'Asia Pacific':
+                valuere = st.selectbox('Choose region', ["Australia Central", "Australia Central 2","Australia East","Australia Southeast",\
+                            "Central India","East Asia","Japan East","Japan West","Jio India Central","Jio India West","Korea Central",\
+                            "Korea South","Southeast Asia","South India","West India"])
+                valuere = valuere.replace(" ", "").lower()
+            if attribute == 'Canada':
+                valuere = st.selectbox('Choose region', ["Canada Central", "Canada East"])
+                valuere = valuere.replace(" ", "").lower()
+            if attribute == 'Europe':
+                valuere = st.selectbox('Choose region', ["France Central", "France South", "Germany North", "Germany West Central", "North Europe",\
+                            "Norway East","Norway West","Sweden Central","Switzerland North","Switzerland West","UK South","UK West","West Europe"])
+                valuere = valuere.replace(" ", "").lower()
+            if attribute == 'Middle East':
+                valuere = st.selectbox('Choose region', ["UAE Central", "UAE North"])
+                valuere = valuere.replace(" ", "").lower()
+            if attribute == 'South America':
+                valuere = st.selectbox('Choose region', ["Brazil South", "Brazil Southeast"])
+                valuere = valuere.replace(" ", "").lower()
+            if attribute == 'US':
+                valuere = st.selectbox('Choose region', ["Central US", "Central US EUAP","East US","East US 2","East US 2 EUAP","North Central US",\
+                            "South Central US","West Central US","West US","West US 2","West US 3"])
+                valuere = valuere.replace(" ", "").lower()
 
-    with col5:
-        valueit = str(st.number_input('Instance',1,help='instance'))
-        #valueit = str(st.slider('Instance',1,20,disabled=False,help='instance')) -> Slider input
+        with col5:
+            valueit = str(st.number_input('Instance',1,help='instance'))
+            #valueit = str(st.slider('Instance',1,20,disabled=False,help='instance')) -> Slider input
 
-    st.write('---')
-    final = valuert + '-' + valuewl + '-' + valueev + '-' + valuere + '-' + valueit
+        st.write('---')
+        final = valuert + '-' + valuewl + '-' + valueev + '-' + valuere + '-' + valueit
 
-    st.subheader('Resource Name')
-    #st.text_area('FinalName',final,help="Final Resource Name")
-    st.code(final, language="python")
-    st.write('\n')                     
+    with maincol2:
+        st.subheader('Resource Name')
+        #st.text_area('FinalName',final,help="Final Resource Name")
+        st.code(final, language="python")
+        st.write('\n')                     
 
     URL = 'https://azureresoucenamer.streamlit.app/'
     PRJ = 'https://github.com/users/SurendraRedd/projects/4'
