@@ -46,7 +46,8 @@ def main():
     with col1:
         st.image('https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/_images/ready/resource-naming.png')
     with col2:
-        st.image('https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/_images/ready/resource-naming-scope.png')
+        pass
+        #st.image('https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/_images/ready/resource-naming-scope.png')
     with st.expander('Demo'):
         # Embed a youtube video
         st_player("https://youtu.be/5p-z_-6T57g")
