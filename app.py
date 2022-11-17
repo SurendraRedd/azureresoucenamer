@@ -38,9 +38,15 @@ def main():
     """
     st.markdown(html_temp, unsafe_allow_html=True)
 
-    st.header("📘Azure Resource Naming Tool")    
+    st.header("📘Azure Resource Naming Tool")
+    st.write('\n')  
     st.write("A simple tool to help you name your Azure resources, based on the [Cloud Adoption Framework naming convention](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)")
-    st.image('https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/_images/ready/resource-naming.png')
+    st.write('\n')
+    col1,col2=st.columns(2)
+    with col1:
+        st.image('https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/_images/ready/resource-naming.png')
+    with col2:
+        st.image('https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/_images/ready/resource-naming-scope.png')
     with st.expander('Demo'):
         # Embed a youtube video
         st_player("https://youtu.be/5p-z_-6T57g")
