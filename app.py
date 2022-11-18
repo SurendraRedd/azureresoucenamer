@@ -191,18 +191,22 @@ def main():
     URL = 'https://azureresoucenamer.streamlit.app/'
     PRJ = 'https://github.com/users/SurendraRedd/projects/4'
     DIS = 'https://github.com/SurendraRedd/azureresoucenamer/discussions'
-    with st.expander('Share This Tool'):
-        st.write(URL)
-        st.markdown(f'''
-                <a href={URL}><button style="background-color:LightBlue;">AzureResourceNamingTool</button></a>
-                ''',
-                unsafe_allow_html=True)
-    with st.expander('Raise an Issue'):
-        st.write(PRJ)
-        st.write(DIS)
-        st.markdown(f'''
-                [![Gitter](https://badges.gitter.im/discussions2021/community.svg)](https://gitter.im/discussions2021/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-                ''',unsafe_allow_html=True)
+
+    one,two=st.columns(2)
+    with one:
+        with st.expander('Share This Tool'):
+            st.write(URL)
+            st.markdown(f'''
+                    <a href={URL}><button style="background-color:LightBlue;">AzureResourceNamingTool</button></a>
+                    ''',
+                    unsafe_allow_html=True)
+    with two:
+        with st.expander('Raise an Issue'):
+            st.write(PRJ)
+            st.write(DIS)
+            st.markdown(f'''
+                    [![Gitter](https://badges.gitter.im/discussions2021/community.svg)](https://gitter.im/discussions2021/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+                    ''',unsafe_allow_html=True)
 
 
 # main function call
