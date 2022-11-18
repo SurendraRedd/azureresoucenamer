@@ -59,7 +59,7 @@ def main():
     st.write('\n')
     col1,col2=st.columns(2)
     with col1:
-        st.image('https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/_images/ready/resource-naming.png')
+        st.image('https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/_images/ready/resource-naming.png',use_column_width=True,caption="Example Resource Naming")
     with col2:
         pass
         #st.image('https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/_images/ready/resource-naming-scope.png')
