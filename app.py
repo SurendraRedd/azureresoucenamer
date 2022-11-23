@@ -33,6 +33,18 @@ st.set_page_config(
         initial_sidebar_state = "expanded"
     )
 
+def tweet_button(tag:str,link:str,text:str,user:str):
+    tweet = f"""
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdeliver.net/npm/semantic-ui@2.4.2/dist/semantic.js"></script>
+    <a href="https://twitter.com/intent/tweet?url={link}&text={text}&via={user}&hastags={tag}">
+    <button class = "ui twitter button large ui button">
+        <i class="twitter icon"></i>
+            Tweet
+    </button></a>
+    """
+    st.markdown(tweet, unsafe_allow_html=True)
+
 def main():
     """
     This function contains the streamlit code details
@@ -196,10 +208,16 @@ def main():
     with one:
         with st.expander('Share This Tool'):
             st.write(URL)
+            st.write("\n")
             st.markdown(f'''
                     <a href={URL}><button style="background-color:LightBlue;">AzureResourceNamingTool</button></a>
                     ''',
                     unsafe_allow_html=True)
+            st.write("\n")
+            tweet_button(tag='streamlit, share ',
+                        link='https://30days.steamlit.app/',
+                        text='Streamlit share button',
+                        user='streamlit')
     with two:
         with st.expander('Raise an Issue'):
             st.write(PRJ)
