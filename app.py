@@ -214,10 +214,11 @@ def main():
                     ''',
                     unsafe_allow_html=True)
             st.write("\n")
-            tweet_button(tag='streamlit, share ',
-                        link='https://30days.steamlit.app/',
-                        text='Streamlit share button',
-                        user='streamlit')
+            #tweet_button(tag='streamlit, share ',
+            #            link='https://30days.steamlit.app/',
+            #            text='Streamlit share button',
+            #            user='streamlit')
+            #st.write('\n')
     with two:
         with st.expander('Raise an Issue'):
             st.write(PRJ)
