@@ -54,13 +54,9 @@ def main():
     st.header("📘Azure Resource Naming Tool")
 
     with st.expander('Demo'):
-        # Embed a youtube video
-        #st_player("https://youtu.be/5p-z_-6T57g")
-        file_ = open("streamlit-app-2022-11-17-00-11-60.gif", "rb")
-        contents = file_.read()
-        data_url = base64.b64encode(contents).decode("utf-8")
-        file_.close()
-
+        with open("streamlit-app-2022-11-17-00-11-60.gif", "rb") as file_:
+            contents = file_.read()
+            data_url = base64.b64encode(contents).decode("utf-8")
         st.markdown(
             f'<img src="data:image/gif;base64,{data_url}" alt="name gif">',
             unsafe_allow_html=True,
@@ -91,7 +87,7 @@ def main():
                     'Virtual network gateway':'vgw','Web Application Firewall (WAF) policy':'waf','Web Application Firewall (WAF) policy rule group':'wafrg'}
     COMPUTE_WEB = {'App Service environment':'ase','App Service plan':'plan','Availability set':'avail','Azure Arc enabled server':'arcs','Azure Arc enabled Kubernetes cluster':'arck',\
                     'Cloud service':'cld','Disk encryption set':'des','Function app':'func','Gallery':'gal','Managed disk (OS)':'osdisk','Managed disk (data)':'disk','Notification Hubs':'ntf','Notification Hubs namespace':'ntfns',\
-                    'Snapshot':'snap','Static web app':'stapp','Virtual machine':'vm','Virtual machine scale set':'vmss','VM storage account':'stvm','Web app':'app'}    
+                    'Snapshot':'snap','Static web app':'stapp','Virtual machine':'vm','Virtual machine scale set':'vmss','VM storage account':'stvm','Web app':'app'}
     CONTAINERS = {"AKS cluster":'aks', "Container registry":'cr',"Container instance":'ci',"Service Fabric cluster":'sf'}
     DATABASES = {"Azure Cosmos DB database":'cosmos', "Azure Cache for Redis instance":'redis',"Azure SQL Database server":'sql',"Azure SQL database":'sqldb',\
                     'Azure Synapse Analytics':'syn','Azure Synapse Analytics Workspaces':'synw','Azure Synapse Analytics SQL Dedicated Pool':'syndp','Azure Synapse Analytics Spark Pool':'synsp',\
@@ -109,7 +105,7 @@ def main():
     MNGMTGOV={'Automation account':'aa','Application Insights':'appi','Azure Monitor action group':'ag','Azure Purview instance':'pview',\
                         'Blueprint':'bp','Blueprint assignment':'bpa','Key vault':'kv','Log Analytics workspace':'log'}
     MIGRATION={'Azure Migrate project':'migr','Database Migration Service instance':'dms','Recovery Services vault':'rsv'}
-    DEPRECATED={'Azure SQL Data Warehouse':'sqldw'}                    
+    DEPRECATED={'Azure SQL Data Warehouse':'sqldw'}
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
         attribute = st.selectbox('Resource Type', ['Select','General', 'Networking', 'Compute and Web', 'Containers', 'Databases', 'Storage', 'AI and Machine Learning', 'Analytics and IoT', 'Azure Virtual Desktop', \
@@ -193,7 +189,7 @@ def main():
         #valueit = str(st.slider('Instance',1,20,disabled=False,help='instance')) -> Slider input
 
     st.write('---')
-    final = valuert + '-' + valuewl + '-' + valueev + '-' + valuere + '-' + valueit
+    final = f'{valuert}-{valuewl}-{valueev}-{valuere}-{valueit}'
 
     st.subheader('Resource Name')
     #st.text_area('FinalName',final,help="Final Resource Name")
@@ -223,9 +219,12 @@ def main():
         with st.expander('Raise an Issue'):
             st.write(PRJ)
             st.write(DIS)
-            st.markdown(f'''
+            st.markdown(
+                '''
                     [![Gitter](https://badges.gitter.im/discussions2021/community.svg)](https://gitter.im/discussions2021/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-                    ''',unsafe_allow_html=True)
+                    ''',
+                unsafe_allow_html=True,
+            )
 
 
 # main function call
